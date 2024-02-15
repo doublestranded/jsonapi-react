@@ -105,4 +105,20 @@ declare module 'jsonapi-react' {
       initialData?: TData
     }
   ): IResult<TData>
+
+  export class Serializer {
+    constructor({
+      ...args
+    }: {
+      schema?: {}
+    })
+
+    serialize(type: string, attrs: {}): { type?: string, data: {} }
+
+    parseResource(type: string, attrs: {}): {} | null
+
+    parseRelationship(type: string, attrs: {}): { type: string, id: any }
+
+    deserialize(res: any): any
+  }
 }
